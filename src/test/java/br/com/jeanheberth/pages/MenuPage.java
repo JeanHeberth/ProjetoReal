@@ -27,11 +27,14 @@ public class MenuPage extends BasePage {
     }
     public void acessarTelaInserirMovimentacao() {
 
-        /*  Clicar em contas */
+        /*  Clicar em Criar Movimentação */
         clicarElementosUtilizandoLinkText("Criar Movimentação");
 
+    }
+    public void acessarTelaResumoMensal() {
 
-
+        /*  Clicar em Resumo Mensal */
+        clicarElementosUtilizandoLinkText("Resumo Mensal");
 
     }
 
