@@ -13,15 +13,15 @@ import static br.com.jeanheberth.core.DriveFactory.getDriver;
 
 public class BasePage {
 
-    /* Método para escrever *//*
+    /* Método para escrever */
     public void escrever(By by, String texto) {
         getDriver().findElement(by).clear();
         getDriver().findElement(by).sendKeys(texto);
-    }*/
+    }
 
     /* Método para escrever */
     public void escrever(String id_campo, String texto) {
-        getDriver().findElement(By.id(id_campo)).sendKeys(texto);
+       escrever(By.id(id_campo), texto);
 
     }
 
@@ -36,9 +36,10 @@ public class BasePage {
         getDriver().findElement(By.linkText(linkText)).click();
 
     }
+
     /* Método para clicar nos elementos por texto */
     public void clicarBotaoPorTexto(String texto) {
-        getDriver().findElement(By.xpath("//button[.='"+texto+"']")).click();
+        getDriver().findElement(By.xpath("//button[.='" + texto + "']")).click();
 
     }
 
@@ -65,9 +66,9 @@ public class BasePage {
 
     /************** Tabela *********************/
 
-    public WebElement obterCelula(String colunaBusca, String valor, String colunaBotao, String idTabela) {
+    public WebElement obterCelula(String colunaBusca, String valor, String colunaBotao, String idTabela){
         //procurar coluna do registro
-        WebElement tabela = getDriver().findElement(By.xpath("//*[@id='" +idTabela+ "']"));
+        WebElement tabela = getDriver().findElement(By.xpath("//*[@id='"+idTabela+"']"));
         int idColuna = obterIndiceColuna(colunaBusca, tabela);
 
         //encontrar a linha do registro
@@ -77,13 +78,11 @@ public class BasePage {
         int idColunaBotao = obterIndiceColuna(colunaBotao, tabela);
 
         //clicar no botao da celula encontrada
-        WebElement celula = tabela.findElement(By.xpath(".//tr[" + idLinha + "]/td[" + idColunaBotao + "]"));
+        WebElement celula = tabela.findElement(By.xpath(".//tr["+idLinha+"]/td["+idColunaBotao+"]"));
         return celula;
-
     }
 
-
-    public void clicarBotaoTabela(String colunaBusca, String valor, String colunaBotao, String idTabela) {
+    public void clicarBotaoTabela(String colunaBusca, String valor, String colunaBotao, String idTabela){
         WebElement celula = obterCelula(colunaBusca, valor, colunaBotao, idTabela);
         celula.findElement(By.xpath(".//input")).click();
 
