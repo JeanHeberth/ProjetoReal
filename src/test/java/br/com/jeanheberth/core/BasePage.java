@@ -13,15 +13,16 @@ import static br.com.jeanheberth.core.DriveFactory.getDriver;
 
 public class BasePage {
 
-    /* Método para escrever */
+    /* Método para escrever *//*
     public void escrever(By by, String texto) {
         getDriver().findElement(by).clear();
         getDriver().findElement(by).sendKeys(texto);
-    }
+    }*/
 
     /* Método para escrever */
     public void escrever(String id_campo, String texto) {
-       escrever(By.id(id_campo), texto);
+        getDriver().findElement(By.id(id_campo)).clear();
+        getDriver().findElement(By.id(id_campo)).sendKeys(texto);
 
     }
 

@@ -7,7 +7,9 @@ import br.com.jeanheberth.pages.MenuPage;
 import br.com.jeanheberth.pages.MovimentacaoPage;
 import br.com.jeanheberth.utils.DataUtils;
 import org.junit.Assert;
+import org.junit.FixMethodOrder;
 import org.junit.Test;
+import org.junit.runners.MethodSorters;
 
 import java.util.Arrays;
 import java.util.Date;
@@ -15,13 +17,14 @@ import java.util.List;
 
 import static br.com.jeanheberth.utils.DataUtils.obterDataFormatada;
 
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class MovimentacaoTest extends BaseTest {
 
     private MenuPage menuPage = new MenuPage();
     private MovimentacaoPage movimentacaoPage = new MovimentacaoPage();
 
     @Test
-    public void testCriarMovimentacao() {
+    public void test1_CriarMovimentacao() {
         menuPage.acessarTelaInserirMovimentacao();
 
         Date dataAtual = DataUtils.obterDataAtual();
@@ -33,7 +36,7 @@ public class MovimentacaoTest extends BaseTest {
         movimentacaoPage.setDescricao("Pagamento realizado");
         movimentacaoPage.setInteressado("Jean Heberth");
         movimentacaoPage.setValor("15000.00");
-        movimentacaoPage.setConta("Conta do testeConta Alterada");
+        movimentacaoPage.setConta("Jean Heberths");
         movimentacaoPage.setStatusPagamento();
         movimentacaoPage.salvar();
 
@@ -42,7 +45,7 @@ public class MovimentacaoTest extends BaseTest {
     }
 
     @Test
-    public void testCamposObrigatorios() {
+    public void test2_CamposObrigatorios() {
         menuPage.acessarTelaInserirMovimentacao();
 
         movimentacaoPage.salvar();
@@ -57,7 +60,7 @@ public class MovimentacaoTest extends BaseTest {
     }
 
     @Test
-    public void testInserirMovimentacaoFutura() {
+    public void test3_InserirMovimentacaoFutura() {
         menuPage.acessarTelaInserirMovimentacao();
 
         Date dataFutura = DataUtils.obterDataComDiferencaDias(2);
@@ -69,7 +72,7 @@ public class MovimentacaoTest extends BaseTest {
         movimentacaoPage.setDescricao("Pagamento realizado");
         movimentacaoPage.setInteressado("Jean Heberth");
         movimentacaoPage.setValor("8454800.00");
-        movimentacaoPage.setConta("Conta do testeConta Alterada");
+        movimentacaoPage.setConta("Jean Heberths");
         movimentacaoPage.setStatusPagamento();
         movimentacaoPage.salvar();
 
